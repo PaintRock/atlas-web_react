@@ -13,7 +13,7 @@ module.exports = {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'public'),
   },
-  devServer: {
+  devServer: path.join(__dirname, 'public'),
     port: 8564,
     open: true,
   },
