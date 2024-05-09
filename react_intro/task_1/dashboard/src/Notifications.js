@@ -1,3 +1,4 @@
+// Task 1: Create a Notifications component
 import React from 'react';
 import './Notifications.css';
 

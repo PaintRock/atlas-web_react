@@ -1,5 +1,6 @@
+/* Task 1: Style the Notifications component */
 .Notifications {
-    border: 10px hashed #ccc;
+    border: 1px solid red;
     padding: 10px;
   }
   

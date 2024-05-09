@@ -1,7 +1,7 @@
+// Task 0: Create a new React app
 import React from 'react';
 import logo from './holberton_logo.jpg';
 import './App.css';
-import { getFullYear, getFooterCopy } from './utils';
 
 function App() {
   return (
@@ -31,7 +31,7 @@ function App() {
     </div> 
     <div className='App-footer'>
       <p>Copyright 2024 - Holberton School</p>
-      </div>
+    </div>
     </div>
   );
 }
