@@ -1,9 +1,9 @@
 import React from 'react';
 import './Notifications.css';
-import { getLatestNotification } from '../utils/utils';
-import PropTypes from 'prop-types';
-import NotificationItem from './NotificationItem';
-import NotificationItemShape from './NotificationItemShape';
+// import { getLatestNotification } from '../utils/utils';
+// import PropTypes from 'prop-types';
+// import NotificationItem from './NotificationItem';
+// import NotificationItemShape from './NotificationItemShape';
 
 
 export default function Notifications() {

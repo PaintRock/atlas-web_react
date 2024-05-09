@@ -25,6 +25,7 @@ export default function Notifications() {
         <span style={{ fontSize: '30px' }}>&times;</span>
       </button>
       <p>Here is the list of notifications</p>
+      <p>Here is the list of notifications</p>
     <ul>
       <NotificationItem type="default" value="New course available" />
       <NotificationItem type="urgent" value="New resume available" />

@@ -23,24 +23,24 @@ function App() {
   );
 }
 
-const App = () => {
-  const listCourses = [
-    { id: 1, name: 'ES6', credit: 60 },
-    { id: 2, name: 'Webpack', credit: 20 },
-    { id: 3, name: 'React', credit: 40 },
-  ];
+// const courses = () => {
+//   const listCourses = [
+//     { id: 1, name: 'ES6', credit: 60 },
+//     { id: 2, name: 'Webpack', credit: 20 },
+//     { id: 3, name: 'React', credit: 40 },
+//   ];
 
-  return (
-    <React.Fragment>
-      <Notifications />
-      <div className="App">
-        <Header />
-        <CourseList listCourses={listCourses} />
-        <Footer />
-      </div>
-    </React.Fragment>
-  );
-};
+//   return (
+//     <React.Fragment>
+//       <Notifications />
+//       <div className="App">
+//         <Header />
+//         <CourseList listCourses={listCourses} />
+//         <Footer />
+//       </div>
+//     </React.Fragment>
+//   );
+// };
 
 export default App;
 
