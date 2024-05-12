@@ -1,12 +1,12 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { mode, entry, plugins, devServer } = require('../../task_5A/dashboard/config/webpack.config');
+const { mode, entry, plugins, devServer } = require('../../../task_5A/dashboard/config/webpack.config');
 
 module.exports = {
     mode: 'development',
-    entry: './src/index.js',
+    entry: '../src/index.js',
     output: {
-        path: path.resolve(__dirname, './dist'),
+        path: path.resolve(__dirname, '../dist'),
         filename: 'bundle.js',
     },
     devtool: 'inline-source-map',
@@ -25,11 +25,11 @@ module.exports = {
 
     plugins: [
         new HtmlWebpackPlugin({
-            template: './src/index.html',
+            template: '../src/index.html',
         }),
     ],
     devServer: {
-        static: './dist',
+        static: '../dist',
         hot: true,
     },
 };
