@@ -4,7 +4,7 @@ const { mode, entry, plugins, devServer } = require('../../../task_5A/dashboard/
 
 module.exports = {
     mode: 'development',
-    entry: '../src/index.js',
+    entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, '../dist'),
         filename: 'bundle.js',
@@ -35,7 +35,7 @@ module.exports = {
 
     plugins: [
         new HtmlWebpackPlugin({
-            template: '../src/index.html',
+            template: './src/index.html',
         }),
     ],
     devServer: {

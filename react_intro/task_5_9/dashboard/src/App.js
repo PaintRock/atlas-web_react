@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './mascot-blue.png';
+// import logo from './mascot-blue.jpg';
 import './App.css';
 import { getFullYear, getFooterCopy } from './utils';
 
