@@ -3,6 +3,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.js';
 import Notifications from './Notifications';
+import './App.css';
+import './Notifications.css';
+
+const h1 = document.createElement('h1');
+h1.innerHTML = "Maybe today is ";
+document.body.appendChild(h1);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

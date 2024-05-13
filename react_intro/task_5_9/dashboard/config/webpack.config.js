@@ -1,13 +1,17 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { mode, entry, plugins, devServer } = require('../../../task_5A/dashboard/config/webpack.config');
+const webpack = require('webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     mode: 'development',
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, '../dist'),
-        filename: 'bundle.js',
+        filename: 'bundle.[contenthash].js',
+        clean: true,
+        publicPath: '/',
     },
     devtool: 'inline-source-map',
     module: {
@@ -24,22 +28,31 @@ module.exports = {
                 },
             {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader'],
+                use: [MiniCssExtractPlugin.loader, 'css-loader'],
             },
             {
-                test: /\.(png|jpe?g|gif|svg)$/i,
-                loader: 'image-webpack-loader',
+                test: /\.png$/i,
+                loader: 'file-loader',
             }
         ]
     },
 
     plugins: [
         new HtmlWebpackPlugin({
+            title: 'Task_5_9 Dashboard',
             template: './src/index.html',
+            
         }),
-    ],
+        new MiniCssExtractPlugin({
+        filename: "[name].[contenthash].css",
+})
+],
     devServer: {
         static: '../dist',
         hot: true,
+        devMiddleware: {
+            publicPath: '/',
+            writeToDisk: true,
     },
+},
 };
