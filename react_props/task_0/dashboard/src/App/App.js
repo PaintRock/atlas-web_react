@@ -1,12 +1,25 @@
 import React from 'react';
-import logo from '../assets/mascot-blue.png';
 import './App.css';
-import { getFullYear, getFooterCopy } from '../utils/utils';
+import Header from '../Header/Header.js';
+import Footer from '../Footer/Footer.js';
+import Login from '../Login/Login.js';
+import Notification from '../Notifications/Notifications.js';
 
 function App() {
   return (
+    <>
+    <Notification />
     <div className="App">
-      <header className="App-header">
+      <Header />
+      <div className="App-body">
+      <Login />
+      </div>
+      <Footer />
+      </div>
+    </>
+  );
+
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="Atlas logo" />
         <h1>
           School dashboard
@@ -19,9 +32,9 @@ function App() {
         >
           Learn React
         </a> */}
-      </header>
+      {/* </header> */} 
     
-    <div className='App-body'>
+    {/* <div className='App-body'>
       <p>Login to access the full dashboard</p>
       <form>
           <div className="form-row">
@@ -36,12 +49,13 @@ function App() {
           <button type="button">OK</button>
           </div>
         </form>
-    </div> 
-    <div className="App-footer">
+    </div>  */}
+    {/* <Footer /> */}
+    {/* <div className="App-footer">
         <p>{getFooterCopy(true)} - {getFullYear()}</p>
-      </div>
-    </div>
-  );
+      </div> */}
+    
+  
 }
 
 export default App;
