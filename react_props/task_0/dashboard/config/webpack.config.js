@@ -1,71 +1,56 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { mode, entry, plugins, devServer } = require('../../../task_5A/dashboard/config/webpack.config');
+const webpack = require('webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
+    mode: 'development',
     entry: './src/index.js',
     output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js',
+        path: path.resolve(__dirname, '../dist'),
+        filename: 'bundle.[contenthash].js',
+        clean: true,
+        publicPath: '/',
     },
+    devtool: 'inline-source-map',
     module: {
         rules: [
-          {
-            test: /\.(js|jsx)$/,
-            exclude: /node_modules/,
-            use: {
-              loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/preset-react'],
+            {
+                test: /\.(js|jsx)$/,
+                
+                use: {
+                  loader: 'babel-loader',
+                        
                     },
                 },
-            },
             {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader'],
+                use: [MiniCssExtractPlugin.loader, 'css-loader'],
             },
             {
-                test: /\.(png|jpg|gif|svg)$/,
-                use: [
-                    {
-                        loader: 'url-loader',
-                        options: {
-                            limit: 8192, // inline files smaller than 8 KB as data URLs
-                        },
-                    },
-                    {
-                        loader: 'image-webpack-loader',
-                        options: {
-                            mozjpeg: {
-                                progressive: true,
-                                quality: 65,
-                            },
-                            optipng: {
-                                enabled: false,
-                            },
-                            pngquant: {
-                                quality: [0.65, 0.90],
-                                speed: 4,
-                            },
-                            gifsicle: {
-                                interlaced: false,
-                            },
-                            webp: {
-                                quality: 75,
-                            },
-                        },
-                    },
-                ],
-            },
-        ],
+                test: /\.png$/i,
+                loader: 'file-loader',
+            }
+        ]
     },
-    devServer: {
-        static: path.join(__dirname, 'dist'),
-        hot: true,
-    },
+
     plugins: [
         new HtmlWebpackPlugin({
-            template: './dist/index.html',
+            title: 'Task_5_9 Dashboard',
+            template: './src/index.html',
+            
         }),
-    ],
-    devtool: 'inline-source-map',
+        new MiniCssExtractPlugin({
+        filename: "[name].[contenthash].css",
+})
+],
+    devServer: {
+        static: '../dist',
+        hot: true,
+        devMiddleware: {
+            publicPath: '/',
+            writeToDisk: true,
+    },
+},
 };

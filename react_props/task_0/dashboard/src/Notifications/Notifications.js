@@ -1,15 +1,12 @@
 import React from 'react';
 import './Notifications.css';
-// import { getLatestNotification } from '../utils/utils';
-// import PropTypes from 'prop-types';
-// import NotificationItem from './NotificationItem';
-// import NotificationItemShape from './NotificationItemShape';
-
+import { getLatestNotification } from '../utils/utils';
 
 export default function Notifications() {
   const handleClick = () => {
     console.log('Close button has been clicked');
   };
+
   return (
     <div className="Notifications">
       <button
