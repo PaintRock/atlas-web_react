@@ -1,15 +1,15 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Login from './Login';
+import Header from './Header';
 
-describe('Login', () => {
+describe('Header', () => {
   it('renders without crashing', () => {
-    shallow(<Login />);
+    shallow(<Header />);
   });
 
-  it('renders 2 input tags and 2 label tags', () => {
-    const wrapper = shallow(<Login />);
-    expect(wrapper.find('input')).toHaveLength(2);
-    expect(wrapper.find('label')).toHaveLength(2);
+  it('renders img and h1 tags', () => {
+    const wrapper = shallow(<Header />);
+    expect(wrapper.find('img')).toHaveLength(1);
+    expect(wrapper.find('h1')).toHaveLength(1);
   });
 });

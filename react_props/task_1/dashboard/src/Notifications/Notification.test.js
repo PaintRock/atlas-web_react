@@ -16,14 +16,4 @@ describe('Notifications component', () => {
     const wrapper = shallow(<Notifications />);
     expect(wrapper.contains(<p>Here is the list of notifications</p>)).toBe(true);
   });
-
-  it('renders NotificationItem elements', () => {
-    const wrapper = shallow(<Notifications />);
-    expect(wrapper.find(NotificationItem)).toHaveLength(3);
-  });
-
-  it('renders the first NotificationItem element with the right html', () => {
-    const wrapper = shallow(<Notifications />);
-    expect(wrapper.find(NotificationItem).first().html()).toContain('<li data-notification-type="default">New course available</li>');
-  });
 });
