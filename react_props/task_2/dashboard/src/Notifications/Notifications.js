@@ -7,6 +7,7 @@ export default function Notifications() {
   const handleClick = () => {
     console.log('Close button has been clicked');
   };
+
   return (
     <div className="Notifications">
       <button
@@ -24,16 +25,16 @@ export default function Notifications() {
       >
         <span style={{ fontSize: '30px' }}>&times;</span>
       </button>
+      {/* Rest of the code */}
       <p>Here is the list of notifications</p>
-      <p>Here is the list of notifications</p>
-    <ul>
-      <NotificationItem type="default" value="New course available" />
-      <NotificationItem type="urgent" value="New resume available" />
-      <NotificationItem
-        type="urgent"
-        html={{ __html: getLatestNotification() }}
-      />
-    </ul>
+      <ul>
+        <li data-priority="default">New course available</li>
+        <li data-priority="urgent">New resume available</li>
+        <li
+          data-priority="urgent"
+          dangerouslySetInnerHTML={{ __html: getLatestNotification() }}
+        ></li>
+      </ul>
     </div>
   );
 }

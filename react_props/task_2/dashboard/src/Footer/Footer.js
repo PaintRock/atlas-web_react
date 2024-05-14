@@ -1,14 +1,14 @@
-import React from 'react';
-import { getFullYear, getFooterCopy } from '../utils/utils.js';
-import './Footer.css';
-
+import React from "react";
+import "./Footer.css";
+import { getFullYear, getFooterCopy } from "../utils/utils";
 
 function Footer() {
   return (
-    <div className="App-footer">
-      <p>{getFooterCopy(true)} - {getFullYear()}</p>
+    <div className="Footer">
+      <footer className="App-footer">
+        <p>{getFooterCopy(true)} - {getFullYear()}</p>
+      </footer>
     </div>
   );
 }
 export default Footer;
-// Path: task_0/dashboard/src/Footer/Footer.test.js

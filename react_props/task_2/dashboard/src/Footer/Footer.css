@@ -3,7 +3,7 @@
     font-size: 20px;
     font-style: italic;
     padding: 20px;
-    border-top: 4px solid red;
+    border-top: 4px solid lightblue;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -11,4 +11,3 @@
     background-color: #f5f5f5;
     z-index: 1;
   }
-  
