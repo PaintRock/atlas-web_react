@@ -7,11 +7,11 @@ describe('utils', () => {
   });
 
   test('getFooterCopy returns the correct string when the argument is true', () => {
-    expect(getFooterCopy(true)).toBe('Holberton School');
+    expect(getFooterCopy(true)).toBe('Atlas School Tulsa - Copyright');
   });
 
   test('getFooterCopy returns the correct string when the argument is false', () => {
-    expect(getFooterCopy(false)).toBe('Holberton School main dashboard');
+    expect(getFooterCopy(false)).toBe('Atlas School main dashboard -- Copyright');
   });
 
   test('getLatestNotification returns the correct string', () => {

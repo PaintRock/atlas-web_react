@@ -7,8 +7,8 @@ describe('Footer', () => {
     shallow(<Footer />);
   });
 
-  it('renders the text "Copyright"', () => {
+  it('renders the text "Atlas School Tulsa"', () => {
     const wrapper = shallow(<Footer />);
-    expect(wrapper.text()).toContain('Copyright');
+    expect(wrapper.text()).toContain('Atlas School Tulsa');
   });
 });
