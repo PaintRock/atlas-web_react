@@ -19,4 +19,35 @@ describe("<NotificationItem />", () => {
     const wrapper = shallow(<NotificationItem html={{ __html: "<u>test</u>" }} />);
     expect(wrapper.find("li").html()).toContain("<u>test</u>");
   });
+
+  it('renders the menu item when displayDrawer is false', () => {
+    const wrapper = shallow(<Notifications />);
+    expect(wrapper.find('.menuItem')).toHaveLength(1);
+  });
+
+  it('does not render the notifications div when displayDrawer is false', () => {
+    const wrapper = shallow(<Notifications />);
+    expect(wrapper.find('.Notifications')).toHaveLength(0);
+  });
+
+  it('renders the menu item when displayDrawer is true', () => {
+    const wrapper = shallow(<Notifications displayDrawer={true} />);
+    expect(wrapper.find('.menuItem')).toHaveLength(1);
+  });
+
+  it('renders the notifications div when displayDrawer is true', () => {
+    const wrapper = shallow(<Notifications displayDrawer={true} />);
+    expect(wrapper.find('.Notifications')).toHaveLength(1);
+  });
+
+  it('renders the text "Here is the list of notifications" when displayDrawer is true', () => {
+    const wrapper = shallow(<Notifications displayDrawer={true} />);
+    expect(wrapper.contains(<p>Here is the list of notifications</p>)).toBe(true);
+  });
+
+  it('does not render the text "Here is the list of notifications" when displayDrawer is false', () => {
+    const wrapper = shallow(<Notifications />);
+    expect(wrapper.contains(<p>Here is the list of notifications</p>)).toBe(false);
+  });
 });
+

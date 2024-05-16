@@ -1,39 +1,66 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Notifications.css';
 import { getLatestNotification } from '../utils/utils';
-import NotificationItem from './NotificationItem';'./NotificationItem.js';
+import NotificationItem from './NotificationItem';
+import NotificationItemShape from './NotificationItemShape';
 
-export default function Notifications() {
+export default function Notifications({ displayDrawer, listNotifications }) {
   const handleClick = () => {
     console.log('Close button has been clicked');
   };
 
   return (
-    <div className="Notifications">
-      <button
-        style={{
-          position: 'absolute',
-          right: '20px',
-          top: '20px',
-          background: 'none',
-          border: 'none',
-          cursor: 'pointer',
-          outline: 'none',
-        }}
-        aria-label="Close"
-        onClick={handleClick}
-      >
-        <span style={{ fontSize: '30px' }}>&times;</span>
-      </button>
-      <p>Here is the list of notifications</p>
-      <ul>
-        <li data-priority="default">New course available</li>
-        <li data-priority="urgent">New resume available</li>
-        <li
-          data-priority="urgent"
-          dangerouslySetInnerHTML={{ __html: getLatestNotification() }}
-        ></li>
-      </ul>
-    </div>
+    <>
+      <div className="menuItem">Your notifications</div>
+      {displayDrawer && (
+        <div className="Notifications">
+          <button
+            style={{
+              position: 'absolute',
+              right: '20px',
+              top: '20px',
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              outline: 'none',
+            }}
+            aria-label="Close"
+            onClick={handleClick}
+          >
+            <span style={{ fontSize: '30px' }}>&times;</span>
+          </button>
+          {listNotifications.length === 0 ? (
+            <p>No new notification for now</p>
+          ) : (
+            <>
+              <p>Here is the list of notifications</p>
+              <ul>
+                {listNotifications.map((notification) => (
+                  <NotificationItem
+                    key={notification.id}
+                    type={notification.type}
+                    value={notification.value}
+                    html={notification.html}
+                  />
+                ))}
+              </ul>
+            </>
+          )}
+        </div>
+      )}
+    </>
   );
 }
+
+Notifications.propTypes = {
+  listNotifications: PropTypes.arrayOf(NotificationItemShape),
+};
+
+Notifications.propTypes = {
+  displayDrawer: PropTypes.bool,
+};
+
+Notifications.defaultProps = {
+  displayDrawer: true,
+};

@@ -1,14 +1,34 @@
 .Notifications {
-    border: 10px solid lightblue;
-    padding: 10px;
-  }
+  position: fixed;
+  top: 30px;
+  right: 20px;
+  width: 33.33%;
+  height: 140px;
+  padding: 20px;
+  border: 2px dashed lightblue;
+  background-color: white;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+}
 
-  .Notifications li[data-priority="default"] {
-    color: blue;
-  }
-  
-  .Notifications li[data-priority="urgent"] {
-    color: red;
-  }
-  
+.menuItem {
+  position: fixed;
+  padding: 10px;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  color: #e1354b;
+}
+
+li[data-notification-type='default'] {
+  color: blue;
+}
+
+li[data-notification-type='urgent'] {
+  color: red;
+}
+
   

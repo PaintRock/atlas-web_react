@@ -1,5 +1,8 @@
 .App {
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 /* .App-logo {
@@ -62,6 +65,8 @@
 .App-body {
   font-size: 24px;
   align-items: center;
+  flex: 1;
+  padding: 20px;
 }
 
 .App-footer {
