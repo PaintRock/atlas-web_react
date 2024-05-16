@@ -10,10 +10,12 @@ import CourseList from '../CourseList/CourseList.js';
 class App extends React.Component {
   static defaultProps = {
     isLoggedIn: true,
+    logOut: () => {},
   };
 
   static propTypes = {
     isLoggedIn: PropTypes.bool,
+    logOut: PropTypes.func,
   };
 
   constructor(props) {
@@ -25,6 +27,22 @@ class App extends React.Component {
         { id: 3, name: 'React', credit: 40 },
       ],
     };
+    this.handleKeyDown = this.handleKeyDown.bind(this);
+  }
+
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleKeyDown);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.handleKeyDown);
+  }
+
+  handleKeyDown(event) {
+    if (event.ctrlKey && event.key === 'h') {
+      alert('Logging you out');
+      this.props.logOut();
+    }
   }
 
   render() {

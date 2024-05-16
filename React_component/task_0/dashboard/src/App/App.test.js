@@ -44,7 +44,26 @@ describe('App', () => {
     expect(wrapper.find(Login)).toHaveLength(0);
     expect(wrapper.find(CourseList)).toHaveLength(1);
   });
+  beforeEach(() => {
+    logOutMock = jest.fn();
+    wrapper = shallow(<App logOut={logOutMock} />);
+    jest.spyOn(global, 'alert').mockImplementation(() => {});
+  });
+
+  afterEach(() => {
+    global.alert.mockRestore();
+  });
+
+  it('should call logOut and display alert when control+h keys are pressed', () => {
+    const event = new KeyboardEvent('keydown', { ctrlKey: true, key: 'h' });
+    document.dispatchEvent(event);
+    expect(logOutMock).toHaveBeenCalledTimes(1);
+    expect(global.alert).toHaveBeenCalledWith('Logging you out');
+  });
 });
+
+
+
 
 //   it('renders a div with the class App-header', () => {
 //     const wrapper = shallow(<App />);
