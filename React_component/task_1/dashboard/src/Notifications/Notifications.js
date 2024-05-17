@@ -5,10 +5,20 @@ import { getLatestNotification } from '../utils/utils';
 import NotificationItem from './NotificationItem';
 import NotificationItemShape from './NotificationItemShape';
 
-export default function Notifications({ displayDrawer, listNotifications }) {
-  const handleClick = () => {
-    console.log('Close button has been clicked');
-  };
+class Notifications extends React.Component {
+  constructor(props) {
+    super(props);
+    this.markAsRead = this.markAsRead.bind(this);
+  }
+  markAsRead(id) {
+    console.log(Notification ${id} has been marked as read');
+  }
+  render() {
+    const { displayDrawer, listNotifications } = this.props;
+
+    const handleClick = () => {
+      console.log('Close button has been clicked');
+    };
 
   return (
     <>
