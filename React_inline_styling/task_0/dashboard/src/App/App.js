@@ -1,6 +1,6 @@
 import React from 'react';
-// import './App.css';
-import { StyleSheet, css } from 'aphrodite';
+import './App.css';
+// import { StyleSheet, css } from 'aphrodite';
 import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
 import Login from '../Login/Login.js';

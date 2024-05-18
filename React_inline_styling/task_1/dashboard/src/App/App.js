@@ -1,5 +1,6 @@
 import React from 'react';
-import './App.css';
+// import './App.css';
+import { StyleSheet, css } from 'aphrodite';
 import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
 import Login from '../Login/Login.js';
@@ -8,6 +9,17 @@ import PropTypes from 'prop-types';
 import CourseList from '../CourseList/CourseList.js';
 import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
 import BodySection from '../BodySection/BodySection';
+
+const styles = StyleSheet.create({
+  app: {
+    fontFamily: 'Arial, sans-serif',
+  },
+  appBody: {
+    marginTop: '1rem',
+    marginBottom: '1rem',
+    nimHeight: '100vh',
+  },
+});
 
 class App extends React.Component {
   static defaultProps = {
@@ -54,9 +66,9 @@ class App extends React.Component {
     return (
       <>
         <Notification />
-        <div className="App">
+        <div className={css(styles.app)}>
           <Header />
-          <main className="App-body">
+          <main className={css(styles.appBody)}>
             {isLoggedIn ? (
               <BodySectionWithMarginBottom title="Course list">
                 <CourseList listCourses={listCourses} />
@@ -70,7 +82,9 @@ class App extends React.Component {
               <p>Some random text</p>
             </BodySection>
           </main>
+          <footer className={css(styles.footer)}>
           <Footer />
+          </footer>
         </div>
       </>
     );
