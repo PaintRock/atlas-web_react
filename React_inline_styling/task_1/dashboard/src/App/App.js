@@ -7,8 +7,8 @@ import Login from '../Login/Login.js';
 import Notification from '../Notifications/Notifications.js';
 import PropTypes from 'prop-types';
 import CourseList from '../CourseList/CourseList.js';
-import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
-import BodySection from '../BodySection/BodySection';
+// import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
+// import BodySection from '../BodySection/BodySection';
 
 const styles = StyleSheet.create({
   app: {
