@@ -16,13 +16,13 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     minHeight: '100vh',
   },
-  appBody: {
+  body: {
     fontSize: '24px',
     alignItems: 'center',
     flex: 1,
     padding: '20px',
   },
-  appFooter: {
+  footer: {
     textAlign: 'center',
     fontSize: '20px',
     fontStyle: 'italic',
@@ -34,19 +34,6 @@ const styles = StyleSheet.create({
     right: 0,
     backgroundColor: '#f5f5f5',
     zIndex: 1,
-  },
-  formRow: {
-    display: 'flex',
-    alignItems: 'center',
-    marginBottom: '1rem',
-  },
-  formGroup: {
-    display: 'flex',
-    alignItems: 'center',
-    marginRight: '1rem',
-  },
-  formGroupLabel: {
-    marginRight: '0.5rem',
   },
 });
 
@@ -60,7 +47,7 @@ class App extends React.Component {
       <div className={css(styles.app)}>
         <Notification />
         <Header />
-        <main className={css(styles.appBody)}>
+        <main className={css(styles.body)}>
           {isLoggedIn ? (
             <BodySectionWithMarginBottom title="Course list">
               <CourseList listCourses={listCourses} />
@@ -74,7 +61,7 @@ class App extends React.Component {
             <p>Some random text</p>
           </BodySection>
         </main>
-        <footer className={css(styles.appFooter)}>
+        <footer className={css(styles.footer)}>
           <Footer />
         </footer>
       </div>
