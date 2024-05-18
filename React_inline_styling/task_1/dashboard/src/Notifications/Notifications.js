@@ -5,6 +5,38 @@ import { getLatestNotification } from '../utils/utils';
 import NotificationItem from './NotificationItem';
 import NotificationItemShape from './NotificationItemShape';
 
+const styles = StyleSheet.create({
+notifications: {
+  position: 'fixed',
+  top: '30px',
+  right: '20px',
+  width: '33.33%',
+  height: '140px',
+  padding: '20px',
+  border: '2px dashed lightblue',
+  backgroundColor: 'white',
+  boxSizing: 'border-box',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'left',
+},
+menuItem: {
+  position: 'fixed',
+  padding: '10px',
+  top: '20px',
+  right: '20px',
+  cursor: 'pointer',
+  color: '#e1354b',
+},
+defaultNotificationStyle: {
+  color: 'blue',
+},
+urgentNotificationStyle: {
+  color: 'red',
+},
+});
+
 export default function Notifications({ displayDrawer, listNotifications }) {
   const handleClick = () => {
     console.log('Close button has been clicked');
@@ -12,9 +44,9 @@ export default function Notifications({ displayDrawer, listNotifications }) {
 
   return (
     <>
-      <div className="menuItem">Your notifications</div>
+      <div className={css(styles.menuItem)}>Your notifications</div>
       {displayDrawer && (
-        <div className="Notifications">
+        <div className={css(styles.notifications)}>
           <button
             style={{
               position: 'absolute',
