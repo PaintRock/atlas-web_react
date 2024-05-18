@@ -1,5 +1,6 @@
 import React from 'react';
-import './App.css';
+// import './App.css';
+import { StyleSheet, css } from 'aphrodite';
 import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
 import Login from '../Login/Login.js';
@@ -8,6 +9,7 @@ import PropTypes from 'prop-types';
 import CourseList from '../CourseList/CourseList.js';
 import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
 import BodySection from '../BodySection/BodySection';
+
 
 class App extends React.Component {
   static defaultProps = {
