@@ -10,6 +10,10 @@ import CourseList from '../CourseList/CourseList.js';
 import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
 import BodySection from '../BodySection/BodySection';
 
+beforeAll(() => {
+  StyleSheetTestUtils.suppressStyleInjection();
+});
+
 const styles = StyleSheet.create({
   app: {
     textAlign: "left",
