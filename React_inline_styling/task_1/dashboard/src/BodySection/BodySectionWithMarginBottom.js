@@ -5,7 +5,7 @@ import BodySection from './BodySection';
 import { StyleSheet, css } from 'aphrodite';
 
 const styles = StyleSheet.create({
-marginBottom: "40px",
+margin: "40px",
 });
 
 const BodySectionWithMarginBottom = (props) => {
