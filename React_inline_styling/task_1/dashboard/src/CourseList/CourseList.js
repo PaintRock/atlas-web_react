@@ -3,7 +3,16 @@ import PropTypes from 'prop-types';
 import CourseListRow from './CourseListRow';
 import CourseShape from './CourseShape';
 import './CourseList.css';
+import { StyleSheet, css } from 'aphrodite';
 
+const styles = StyleSheet.create({
+  CourseList: {
+    width: '100%',
+    borderCollapse: 'collapse',
+    borderSpacing: '0',
+    textAlign: 'left',
+  },  
+  
 const CourseList = ({ listCourses }) => {
   return (
     <div className="table-container">
