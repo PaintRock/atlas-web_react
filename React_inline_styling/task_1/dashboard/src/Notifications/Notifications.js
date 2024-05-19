@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import './Notifications.css';
 import { getLatestNotification } from '../utils/utils';
 import NotificationItem from './NotificationItem';
 import NotificationItemShape from './NotificationItemShape';
