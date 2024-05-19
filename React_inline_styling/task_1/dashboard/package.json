@@ -50,6 +50,7 @@
   "dependencies": {
     "@babel/cli": "^7.24.5",
     "aphrodite": "^2.4.0",
+    "bootstrap": "^5.3.3",
     "core-js": "^3.37.1",
     "jest-environment-jsdom": "^29.7.0",
     "prop-types": "^15.8.1",
