@@ -11,6 +11,10 @@ import { StyleSheetTestUtils } from 'aphrodite';
 let logOutMock;
 let wrapper;
 
+beforeAll(() => {
+  StyleSheetTestUtils.suppressStyleInjection();
+});
+
 beforeEach(() => {
   document.addEventListener = jest.fn();
   global.alert = jest.fn();
