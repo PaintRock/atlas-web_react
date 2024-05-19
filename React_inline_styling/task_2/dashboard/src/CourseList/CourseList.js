@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   courseListThv: {
     padding: '8px',
     textAlign: 'center',
-    border: '1px solid black',
+    border: '10px solid black',
     backgroundColor: 'white',
     fontWeight: 'bold',
   },

@@ -4,7 +4,7 @@ import { StyleSheet, css } from 'aphrodite';
 
 const styles = StyleSheet.create({
   bodySection: {
-    marginBottom: '40px',
+    marginBottom: '80px',
   }, 
 }); 
 
