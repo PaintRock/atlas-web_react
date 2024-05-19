@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import CourseList from '../CourseList/CourseList.js';
 import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
 import BodySection from '../BodySection/BodySection';
-// import './App.css';
+
 
 
 const styles = StyleSheet.create({
