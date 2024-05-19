@@ -2,7 +2,7 @@ import React from 'react';
 import logo from '../assets/mascot-blue.png';
 import { StyleSheet, css } from 'aphrodite';
 
-// Define the styles with keyframes included directly in the style object
+
 const styles = StyleSheet.create({
   '@keyframes shake': {
     '0%': {
