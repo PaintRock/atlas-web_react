@@ -6,7 +6,7 @@ import BodySection from './BodySection';
 
 const styles = StyleSheet.create({
   bodySectionWithMargin: {
-    marginBottom: '40px',
+    marginBottom: '4px',
   },
 });
 

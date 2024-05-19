@@ -12,6 +12,13 @@ const styles = StyleSheet.create({
     borderCollapse: 'collapse',
     marginBottom: '20px',
   },
+  courseListThv: {
+    padding: '8px',
+    textAlign: 'center',
+    border: '1px solid black',
+    backgroundColor: 'white',
+    fontWeight: 'bold',
+  },
   courseListTh: {
     padding: '8px',
     textAlign: 'left',
@@ -43,7 +50,7 @@ const CourseList = ({ listCourses }) => {
       <table id="CourseList" className={css(styles.courseList)}>
         <thead>
           <tr className={css(styles.courseListTheadTrFirstChild)}>
-            <th className={css(styles.courseListTh)}>Available courses</th>
+            <th className={css(styles.courseListThv)}>Available courses</th>
           </tr>
           <tr>
             <th className={css(styles.courseListTh)}>Course name</th>

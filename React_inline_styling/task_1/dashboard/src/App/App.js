@@ -1,5 +1,4 @@
 import React from 'react';
-// import './App.css';
 import { StyleSheet, css } from 'aphrodite';
 import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
@@ -9,7 +8,7 @@ import PropTypes from 'prop-types';
 import CourseList from '../CourseList/CourseList.js';
 import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
 import BodySection from '../BodySection/BodySection';
-
+// import './App.css';
 
 
 const styles = StyleSheet.create({
@@ -20,7 +19,7 @@ const styles = StyleSheet.create({
     minHeight: "100vh",
   },
   body: {
-    fontSize: "24px",
+    fontSize: "28px",
     alignItems: "center",
     flex: 1,
     padding: "20px",

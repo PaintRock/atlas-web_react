@@ -7,6 +7,8 @@ import Login from '../Login/Login';
 import Footer from '../Footer/Footer';
 import CourseList from '../CourseList/CourseList';
 import { StyleSheetTestUtils } from 'aphrodite';
+import BodySection from '../BodySection/BodySection';
+
 
 let logOutMock;
 let wrapper;
