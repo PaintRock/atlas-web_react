@@ -8,7 +8,8 @@ import PropTypes from 'prop-types';
 import CourseList from '../CourseList/CourseList.js';
 import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
 import BodySection from '../BodySection/BodySection';
-
+import listNotifications from '../Notifications/Notifications';
+import { getLatestNotification } from '../utils/utils';
 
 
 const styles = StyleSheet.create({
@@ -43,6 +44,7 @@ class App extends React.Component {
   static defaultProps = {
     isLoggedIn: false,
     logOut: () => {},
+
   };
 
   static propTypes = {
@@ -57,6 +59,11 @@ class App extends React.Component {
         { id: 1, name: 'ES6', credit: 60 },
         { id: 2, name: 'Webpack', credit: 20 },
         { id: 3, name: 'React', credit: 40 },
+      ],
+      listNotifications: [
+        { id: 1, type: 'default', value: 'New course available' },
+        { id: 2, type: 'urgent', value: 'New resume available' },
+        { id: 3, type: 'urgent', html: { __html: getLatestNotification() } },
       ],
     };
     this.handleKeyDown = this.handleKeyDown.bind(this);
@@ -78,12 +85,12 @@ class App extends React.Component {
   }
 
   render() {
-    const { isLoggedIn } = this.props;
-    const { listCourses } = this.state;
+    const { isLoggedIn, displayDrawer } = this.props;
+    const { listCourses, listNotifications } = this.state;
 
     return (
       <>
-        <Notification />
+        <Notification listNotifications={listNotifications}/>
         <div className={css(styles.app)}>
           <Header />
           <main className={css(styles.body)}>

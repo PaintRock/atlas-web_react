@@ -5,6 +5,7 @@ import { getLatestNotification } from '../utils/utils';
 import NotificationItem from './NotificationItem';
 import NotificationItemShape from './NotificationItemShape';
 import { StyleSheet, css } from 'aphrodite';
+import { isLoggedIn } from '../Login/Login';
 
 const styles = StyleSheet.create({
 notifications: {

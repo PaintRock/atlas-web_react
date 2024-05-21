@@ -2,9 +2,8 @@ import React from 'react';
 import logo from '../assets/mascot-blue.png';
 import { StyleSheet, css } from 'aphrodite';
 
-// Define the styles with keyframes included directly in the style object
-const styles = StyleSheet.create({
-  '@keyframes shake': {
+
+const translateSpin = {
     '0%': {
       transform: 'rotate(0deg)',
     },
@@ -12,10 +11,10 @@ const styles = StyleSheet.create({
       transform: 'rotate(-20deg)',
     },
     '20%': {
-      transform: 'rotate(20deg)',
+      transform: 'rotate(40deg)',
     },
     '30%': {
-      transform: 'rotate(-10deg)',
+      transform: 'rotate(-50deg)',
     },
     '40%': {
       transform: 'rotate(10deg)',
@@ -38,12 +37,13 @@ const styles = StyleSheet.create({
     '100%': {
       transform: 'rotate(360deg)',
     },
-  },
+  };
+const styles = StyleSheet.create({
   logo: {
     height: '100px',
     pointerEvents: 'none',
     marginRight: '20px',
-    animationName: 'shake', // Reference the keyframes animation
+    animationName: [translateSpin],
     animationDuration: '10s',
     animationIterationCount: 'infinite',
     animationTimingFunction: 'ease-in-out',
