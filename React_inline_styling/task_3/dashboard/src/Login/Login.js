@@ -4,16 +4,44 @@ import { StyleSheet, css } from "aphrodite";
 const styles = StyleSheet.create({
   formRow: {
     display: 'flex',
+    flexDirection: 'row',
     alignItems: 'center',
     marginBottom: '1rem',
+    '@media (max-width: 900px)': {
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+    },
   },
   formGroup: {
     display: 'flex',
+    flexDirection: 'row',
     alignItems: 'center',
     marginRight: '1rem',
+    '@media (max-width: 900px)': {
+      marginBottom: '0.5rem',
+      width: '100%',
+    },
   },
   formLabel: {
     marginRight: '0.5rem',
+    width: '70px',
+    textAlign: 'right',
+  },
+  formInput: {
+    flex: '1',
+    border: 'none',
+     },
+  button: {
+    backgroundColor: 'blue',
+    color: 'white',
+    padding: '0.5rem 1rem',
+    borderRadius: '4px',
+    border: 'none',
+    cursor: 'pointer',
+    '@media (max-width: 900px)': {
+      marginTop: '1rem',
+      width: 'auto',
+    },
   },
 });
 
@@ -27,15 +55,21 @@ function Login() {
             <label htmlFor="email" className={css(styles.formLabel)}>
               Email:
             </label>
-            <input type="email" id="email" name="email" />
+            <input type="email" id="email" name="email" style={{border: 'none'}}/>
           </div>
           <div className={css(styles.formGroup)}>
             <label htmlFor="password" className={css(styles.formLabel)}>
               Password:
             </label>
-            <input type="password" id="password" name="password" />
+            <input
+              type="password"
+              id="password"
+              name="password"
+              className={css(styles.formInput)}
+              style={{ marginLeft: '40px' }}
+            />
           </div>
-          <button type="button">OK</button>
+          <button className={css(styles.button)} type="button">OK</button>
         </div>
       </form>
     </div>
