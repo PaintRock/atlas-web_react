@@ -7,7 +7,7 @@ import NotificationItemShape from './NotificationItemShape';
 import { StyleSheet, css } from 'aphrodite';
 import Login from '../Login/Login';
 
-const opacityKeyframes = {
+const opacity = {
   '0%': {
     opacity: 0.5,
   },
@@ -16,7 +16,7 @@ const opacityKeyframes = {
   },
 };
 
-const bounceKeyframes = {
+const bounce = {
   '0%': {
     transform: 'rotate(0deg)',
   },
@@ -65,7 +65,7 @@ menuItem: {
   cursor: 'pointer',
   zIndex: 1,
     ':hover': {
-      animationName: [opacityKeyframes, bounceKeyframes],
+      animationName: [opacity, bounce],
       animationDuration: ['1s', '0.2s'],
       animationIterationCount: 'infinite',
     },
