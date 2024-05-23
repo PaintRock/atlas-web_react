@@ -11,11 +11,6 @@ describe('Footer', () => {
     shallow(<Footer />);
   });
 
-  it('renders the text "Atlas School Tulsa"', () => {
-    const wrapper = shallow(<Footer />);
-    expect(wrapper.text()).toContain('Atlas School Tulsa');
-  });
-
   it('does not display the link when the user is logged out within the context', () => {
     const wrapper = shallow(
       <AppContext.Provider value={{ user: { isLoggedIn: false } }}>

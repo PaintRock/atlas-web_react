@@ -59,5 +59,4 @@ describe('Notifications component', () => {
     expect(handleHideDrawer).toHaveBeenCalled();
   });
 
-  latestNotification = listNotifications[listNotifications.length - 1];
 });
