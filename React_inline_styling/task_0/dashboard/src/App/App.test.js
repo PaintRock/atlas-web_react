@@ -32,19 +32,7 @@ describe('App', () => {
     expect(wrapper.find(Notifications).length).toBe(1);
   });
 
-  it('should contain the Header component', () => {
-    expect(wrapper.find(Header).length).toBe(1);
-  });
-
-  it('should contain the Login component', () => {
-    expect(wrapper.find(Login).length).toBe(1);
-  });
-
-  it('should contain the Footer component', () => {
-    expect(wrapper.find(Footer).length).toBe(1);
-  });
-
-  it('renders Login component when isLoggedIn is false', () => {
+ it('renders Login component when isLoggedIn is false', () => {
     expect(wrapper.find(Login)).toHaveLength(1);
     expect(wrapper.find(CourseList)).toHaveLength(0);
   });

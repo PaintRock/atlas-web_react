@@ -13,7 +13,7 @@ import BodySection from '../BodySection/BodySection';
 
 class App extends React.Component {
   static defaultProps = {
-    isLoggedIn: true,
+    isLoggedIn: false,
     logOut: () => {},
   };
 

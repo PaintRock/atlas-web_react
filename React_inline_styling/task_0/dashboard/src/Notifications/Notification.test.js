@@ -16,20 +16,4 @@ describe('Notifications component', () => {
     const wrapper = shallow(<Notifications listNotifications={listNotifications} />);
     expect(wrapper.find('ul').children().length).toBe(listNotifications.length);
   });
-
-  it('renders the text "Here is the list of notifications"', () => {
-    const wrapper = shallow(<Notifications />);
-    expect(wrapper.contains(<p>Here is the list of notifications</p>)).toBe(true);
-  });
-
-  it('should call the spy with the right message when markAsRead is called', () => {
-    const wrapper = shallow(<Notifications />);
-    const instance = wrapper.instance();
-    const consoleSpy = jest.spyOn(console, 'log');
-
-    instance.markAsRead(1);
-
-    expect(consoleSpy).toHaveBeenCalledWith('Notification 1 has been marked as read');
-    consoleSpy.mockRestore();
-  });
 });

@@ -141,3 +141,4 @@ Notifications.defaultProps = {
   displayDrawer: false,
   listNotifications: [],
 };
+
