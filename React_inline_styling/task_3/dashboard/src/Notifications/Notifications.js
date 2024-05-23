@@ -23,13 +23,25 @@ notifications: {
   justifyContent: 'center',
   alignItems: 'left',
 },
+NotificationOpened: {
+  top: '0',
+  left: '0',
+  width: '100%',
+  height: '100%', 
+  padding: '0',
+  border: 'none',
+  fontSize: '20px',
+  justifyContent: 'flex-start',
+  alignItems: 'center',
+},
+
 menuItem: {
   position: 'fixed',
   padding: '10px',
   top: '20px',
   right: '20px',
   cursor: 'pointer',
-  color: '#e1354b',
+  color: 'black',
 },
 defaultNotificationStyle: {
   color: 'blue',
@@ -48,7 +60,7 @@ export default function Notifications({ displayDrawer, listNotifications }) {
     <>
       <div className={css(styles.menuItem)}>Your notifications</div>
       {displayDrawer && (
-        <div className={css(styles.notifications)}>
+        <div className={css(styles.notifications, styles.NotificationOpened)}>
           <button
             style={{
               position: 'absolute',
