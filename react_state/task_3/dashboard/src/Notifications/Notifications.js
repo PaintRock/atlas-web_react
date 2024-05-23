@@ -93,7 +93,7 @@ export default function Notifications({ displayDrawer, listNotifications, handle
       <div className={css(styles.menuItem)}>Your notifications</div>
       )}
       {displayDrawer && (
-        <div className={css(styles.notifications, dislplayDrawer && styles.NotificationOpened)}>
+        <div className={css(styles.notifications, displayDrawer && styles.NotificationOpened)}>
           <button
             style={{
               position: 'absolute',
@@ -116,11 +116,13 @@ export default function Notifications({ displayDrawer, listNotifications, handle
               <p>Here is the list of notifications</p>
               <ul>
                 {listNotifications.map((notification) => (
-                  <NotificationItem
-                    key={notification.id}
-                    type={notification.type}
-                    value={notification.value}
-                    html={notification.html}
+                   <NotificationItem
+                   key={notification.id}
+                   id={notification.id}
+                   type={notification.type}
+                   value={notification.value}
+                   html={notification.html}
+                   markAsRead={markNotificationAsRead}
                   />
                 ))}
               </ul>
@@ -138,6 +140,7 @@ Notifications.propTypes = {
   handleDisplayDrawer: PropTypes.func,
   handleHideDrawer: PropTypes.func,
   isLoggedIn: PropTypes.bool,
+  markNotificationAsRead: PropTypes.func,
 };
 
 Notifications.defaultProps = {
@@ -146,4 +149,7 @@ Notifications.defaultProps = {
   handleDisplayDrawer: () => {},
   handleHideDrawer: () => {},
   isLoggedIn: false,
+  markNotificationAsRead: () => {},
 };
+
+

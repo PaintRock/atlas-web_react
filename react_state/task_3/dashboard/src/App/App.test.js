@@ -68,4 +68,24 @@ describe('App', () => {
     expect(logOutMock).toHaveBeenCalledTimes(1);
     expect(global.alert).toHaveBeenCalledWith('Logging you out');
   });
+  
+  it('markNotificationAsRead works as intended', () => {
+    const wrapper = shallow(<App />);
+    const instance = wrapper.instance();
+
+    instance.setState({
+      listNotifications: [
+        { id: 1, type: 'default', value: 'Notification 1' },
+        { id: 2, type: 'urgent', value: 'Notification 2' },
+        { id: 3, type: 'urgent', value: 'Notification 3' },
+      ],
+    });
+
+    instance.markNotificationAsRead(2);
+
+    expect(instance.state.listNotifications).toEqual([
+      { id: 1, type: 'default', value: 'Notification 1' },
+      { id: 3, type: 'urgent', value: 'Notification 3' },
+    ]);
+  });
 });

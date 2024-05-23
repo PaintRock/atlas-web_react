@@ -20,21 +20,26 @@ describe('Notifications component', () => {
     shallow(<Notifications />);
   });
 
-  it('renders the correct number of list items based on the listNotifications prop', () => {
-    const listNotifications = [
-      { id: 1, type: 'default', value: 'Notification 1' },
-      { id: 2, type: 'urgent', value: 'Notification 2' },
-      { id: 3, type: 'default', value: 'Notification 3' },
-    ];
-    const wrapper = shallow(<Notifications listNotifications={listNotifications} />);
-    expect(wrapper.find('ul').children().length).toBe(listNotifications.length);
+  it('renders the correct number of NotificationItem components', () => {
+    const wrapper = shallow(
+      <Notifications
+        displayDrawer={true}
+        listNotifications={listNotifications}
+      />
+    );
+    expect(wrapper.find(NotificationItem)).toHaveLength(listNotifications.length);
   });
 
   it('renders the text "Here is the list of notifications"', () => {
-    const wrapper = shallow(<Notifications />);
+    const wrapper = shallow(
+      <Notifications
+        displayDrawer={true}
+        listNotifications={listNotifications}
+      />
+    );
     expect(wrapper.contains(<p>Here is the list of notifications</p>)).toBe(true);
   });
-
+  
   it('should call the spy with the right message when markAsRead is called', () => {
     const wrapper = shallow(<Notifications />);
     const instance = wrapper.instance();
@@ -59,5 +64,4 @@ describe('Notifications component', () => {
     expect(handleHideDrawer).toHaveBeenCalled();
   });
 
-  latestNotification = listNotifications[listNotifications.length - 1];
 });

@@ -95,7 +95,7 @@ function Login() {
               value={password}
               onChange={handleChangePassword}
               className={css(styles.formInput)}
-              style={{ marginLeft: '40px' }}
+              
             />
           </div>
           <input

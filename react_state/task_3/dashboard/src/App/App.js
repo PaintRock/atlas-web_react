@@ -106,6 +106,7 @@ class App extends React.Component {
         displayDrawer={displayDrawer}
         handleDisplayDrawer={this.handleDisplayDrawer}
         handleHideDrawer={this.handleHideDrawer}
+        markNotificationAsRead={this.markNotificationAsRead}
         />
         <div className={css(styles.app)}>
           <Header />
