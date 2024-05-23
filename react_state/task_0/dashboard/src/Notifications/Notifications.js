@@ -90,10 +90,12 @@ export default function Notifications({ displayDrawer, listNotifications, handle
   return (
     <>
       {isLoggedIn && !displayDrawer && (
-      <div className={css(styles.menuItem)}>Your notifications</div>
-      )}
+  <div className={css(styles.menuItem)} onClick={handleDisplayDrawer}>
+    Your notifications
+  </div>
+)}
       {displayDrawer && (
-        <div className={css(styles.notifications, dislplayDrawer && styles.NotificationOpened)}>
+        <div className={css(styles.notifications, displayDrawer && styles.NotificationOpened)}>
           <button
             style={{
               position: 'absolute',
