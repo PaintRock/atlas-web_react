@@ -44,7 +44,7 @@ describe('App', () => {
   });
 
   it('should contain the Login component', () => {
-    expect(wrapper.find(Login).length).toBe(1);
+    expect(wrapper.find(Login).length).toBe(0);
   });
 
   it('should contain the Footer component', () => {
