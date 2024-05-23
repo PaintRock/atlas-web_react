@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
 
 class App extends React.Component {
   static defaultProps = {
-    isLoggedIn: true,
+    isLoggedIn: false,
     logOut: () => {},
 
   };
