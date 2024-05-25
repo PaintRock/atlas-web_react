@@ -58,10 +58,12 @@ class App extends React.Component {
       ],
       displayDrawer: false,
     };
-    this.handleKeyDown = this.handleKeyDown.bind(this);
-    this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
-    this.handleHideDrawer = this.handleHideDrawer.bind(this);
-  }
+  this.handleKeyDown = this.handleKeyDown.bind(this);
+  this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
+  this.handleHideDrawer = this.handleHideDrawer.bind(this);
+  this.logIn = this.logIn.bind(this);
+  this.logOut = this.logOut.bind(this);
+}
 
   componentDidMount() {
     document.addEventListener('keydown', this.handleKeyDown);
@@ -71,22 +73,15 @@ class App extends React.Component {
     document.removeEventListener('keydown', this.handleKeyDown);
   }
 
-  handleKeyDown(event) {
-    if (event.ctrlKey && event.key === 'h') {
-      alert('Logging you out');
-      this.state.logOut();
-    }
+  handleDisplayDrawer() {
+    this.setState({ displayDrawer: true });
   }
 
-  handleDisplayDrawer = () => {
-    this.setState({ displayDrawer: true });
-  };
-
-  handleHideDrawer = () => {
+  handleHideDrawer() {
     this.setState({ displayDrawer: false });
-  };
+  }
 
-  logIn = (email, password) => {
+  logIn(email, password) {
     this.setState({
       user: {
         email,
@@ -94,17 +89,17 @@ class App extends React.Component {
         isLoggedIn: true,
       },
     });
-  };
+  }
 
-  logOut = () => {
+  logOut() {
     this.setState({
       user: user,
     });
-  };
+  }
 
   render() {
     const { user, logOut, listCourses, listNotifications } = this.state;
-  
+
     return (
       <AppContext.Provider value={{ user, logOut }}>
         <Notification
