@@ -95,7 +95,7 @@ export default function Notifications({ displayDrawer, listNotifications, handle
 )}
       {displayDrawer && (
         <div className={css(styles.notifications, displayDrawer && styles.NotificationOpened)}>
-          <button
+                   <button
             style={{
               position: 'absolute',
               right: '20px',
@@ -106,8 +106,9 @@ export default function Notifications({ displayDrawer, listNotifications, handle
               outline: 'none',
             }}
             aria-label="Close"
-            onClick={handleClick}
-          > Close
+            onClick={handleHideDrawer}
+          >
+            Close
             <span style={{ fontSize: '30px' }}>&times;</span>
           </button>
           {listNotifications.length === 0 ? (
@@ -148,3 +149,25 @@ Notifications.defaultProps = {
   handleHideDrawer: () => {},
   isLoggedIn: false,
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

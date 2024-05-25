@@ -10,6 +10,7 @@ import CourseList from '../CourseList/CourseList.js';
 import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
 import BodySection from '../BodySection/BodySection';
 import { getLatestNotification } from '../utils/utils';
+import Notifications from '../Notifications/Notifications.js';
 
 
 const styles = StyleSheet.create({
