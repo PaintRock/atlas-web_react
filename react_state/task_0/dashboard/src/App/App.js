@@ -103,13 +103,13 @@ class App extends React.Component {
   };
 
   render() {
-    const { user, logOut, listCourses, listNotifications, displayDrawer } = this.state;
+    const { user, logOut, listCourses, listNotifications } = this.state;
   
     return (
-      <AppContext.Provider value={{ user, logOut: this.logOut }}>
+      <AppContext.Provider value={{ user, logOut }}>
         <Notification
           listNotifications={listNotifications}
-          displayDrawer={displayDrawer}
+          displayDrawer={this.state.displayDrawer}
           handleDisplayDrawer={this.handleDisplayDrawer}
           handleHideDrawer={this.handleHideDrawer}
         />
