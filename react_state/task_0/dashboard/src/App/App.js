@@ -104,7 +104,7 @@ class App extends React.Component {
 
   render() {
     const { user, listCourses, listNotifications, displayDrawer } = this.state;
-
+  
     return (
       <AppContext.Provider value={{ user, logOut: this.logOut }}>
         <Notification
