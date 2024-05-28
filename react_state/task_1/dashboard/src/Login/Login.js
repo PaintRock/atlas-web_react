@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, css } from "aphrodite";
+import { useState } from 'react';
 
 const styles = StyleSheet.create({
   formRow: {
@@ -46,16 +47,43 @@ const styles = StyleSheet.create({
 });
 
 function Login() {
-  return (
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [enableSubmit, setEnableSubmit] = useState(false);
+    
+    const handleLoginSubmit = (e) => {
+        e.preventDefault();
+        setIsLoggedIn(true);
+    };
+
+    const handleChangePassword = (e) => {
+      setPassword(e.target.value);
+      setEnableSubmit(email !== '' && e.target.value !== '');
+    };
+
+    const handleChangeEmail = (e) => {
+      setEmail(e.target.value);
+      setEnableSubmit(e.target.value !== '' && password !== '');
+    };
+
+    return (
     <div className="App-body">
       <p>Login to access the full dashboard</p>
-      <form>
+      <form  onSubmit={handleLoginSubmit}>
         <div className={css(styles.formRow)}>
           <div className={css(styles.formGroup)}>
             <label htmlFor="email" className={css(styles.formLabel)}>
               Email:
             </label>
-            <input type="email" id="email" name="email" style={{border: 'none'}}/>
+            <input 
+            type="email" 
+            id="email" 
+            name="email"
+            className={css(styles.formInput)}
+            value={email}
+            onChange={handleChangeEmail}
+               />
           </div>
           <div className={css(styles.formGroup)}>
             <label htmlFor="password" className={css(styles.formLabel)}>
@@ -66,10 +94,15 @@ function Login() {
               id="password"
               name="password"
               className={css(styles.formInput)}
+              value={password}
               style={{ marginLeft: '40px' }}
             />
           </div>
-          <button className={css(styles.button)} type="button">OK</button>
+          <input type='submit' 
+          className={css(styles.button)}
+            disabled={!enableSubmit} 
+            value="OK"
+            />
         </div>
       </form>
     </div>

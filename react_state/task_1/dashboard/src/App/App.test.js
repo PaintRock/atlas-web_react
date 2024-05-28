@@ -68,4 +68,15 @@ describe('App', () => {
     expect(logOutMock).toHaveBeenCalledTimes(1);
     expect(global.alert).toHaveBeenCalledWith('Logging you out');
   });
+
+  it('should display drawer when handleDisplayDrawer is called', () => {
+    wrapper.instance().handleDisplayDrawer();
+    expect(wrapper.state('displayDrawer')).toBe(true);
+  });
+
+  it('should hide drawer when handleHideDrawer is called', () => {
+    wrapper.instance().handleDisplayDrawer();
+    wrapper.instance().handleHideDrawer();
+    expect(wrapper.state('displayDrawer')).toBe(false);
+  });
 });

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import './Notifications.css';
 import { getLatestNotification } from '../utils/utils';
 import NotificationItem from './NotificationItem';
 import NotificationItemShape from './NotificationItemShape';
@@ -90,11 +89,13 @@ export default function Notifications({ displayDrawer, listNotifications, handle
   return (
     <>
       {isLoggedIn && !displayDrawer && (
-      <div className={css(styles.menuItem)}>Your notifications</div>
-      )}
+  <div className={css(styles.menuItem)} onClick={handleDisplayDrawer}>
+    Your notifications
+  </div>
+)}
       {displayDrawer && (
         <div className={css(styles.notifications, displayDrawer && styles.NotificationOpened)}>
-          <button
+                   <button
             style={{
               position: 'absolute',
               right: '20px',
@@ -105,8 +106,9 @@ export default function Notifications({ displayDrawer, listNotifications, handle
               outline: 'none',
             }}
             aria-label="Close"
-            onClick={handleClick}
-          > Close
+            onClick={handleHideDrawer}
+          >
+            Close
             <span style={{ fontSize: '30px' }}>&times;</span>
           </button>
           {listNotifications.length === 0 ? (
@@ -147,3 +149,25 @@ Notifications.defaultProps = {
   handleHideDrawer: () => {},
   isLoggedIn: false,
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -6,14 +6,27 @@ import { StyleSheetTestUtils } from 'aphrodite';
 beforeAll(() => {
   StyleSheetTestUtils.suppressStyleInjection();
 });
-describe('Header', () => {
-  it('renders without crashing', () => {
-    shallow(<Header />);
+
+describe('Login', () => {
+  it('should render without crashing', () => {
+    shallow(<Login />);
   });
 
-  it('renders img and h1 tags', () => {
-    const wrapper = shallow(<Header />);
-    expect(wrapper.find('img')).toHaveLength(1);
-    expect(wrapper.find('h1')).toHaveLength(1);
+  it('should disable submit button by default', () => {
+    const wrapper = shallow(<Login />);
+    const submitButton = wrapper.find('input[type="submit"]');
+    expect(submitButton.prop('disabled')).toBe(true);
+  });
+
+  it('should enable submit button after changing input values', () => {
+    const wrapper = shallow(<Login />);
+    const emailInput = wrapper.find('input[name="email"]');
+    const passwordInput = wrapper.find('input[name="password"]');
+    const submitButton = wrapper.find('input[type="submit"]');
+
+    emailInput.simulate('change', { target: { value: 'test@example.com' } });
+    passwordInput.simulate('change', { target: { value: 'password123' } });
+
+    expect(submitButton.prop('disabled')).toBe(false);
   });
 });

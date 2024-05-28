@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { AppContext, user, logOut } from './AppContext';
 import { StyleSheet, css } from 'aphrodite';
 import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
@@ -41,20 +42,11 @@ const styles = StyleSheet.create({
 });
 
 class App extends React.Component {
-  static defaultProps = {
-    isLoggedIn: false,
-    logOut: () => {},
-
-  };
-
-  static propTypes = {
-    isLoggedIn: PropTypes.bool,
-    logOut: PropTypes.func,
-  };
-
   constructor(props) {
     super(props);
     this.state = {
+      user: user,
+      logOut: logOut,
       listCourses: [
         { id: 1, name: 'ES6', credit: 60 },
         { id: 2, name: 'Webpack', credit: 20 },
@@ -80,43 +72,58 @@ class App extends React.Component {
     document.removeEventListener('keydown', this.handleKeyDown);
   }
 
-
   handleKeyDown(event) {
     if (event.ctrlKey && event.key === 'h') {
       alert('Logging you out');
-      this.props.logOut();
+      this.state.logOut();
     }
   }
-    handleDisplayDrawer = () => {
-      this.setState({ displayDrawer: true });
-    };
-    handleHideDrawer = () => {
-      this.setState({ displayDrawer: false });
-    };
 
+  handleDisplayDrawer = () => {
+    this.setState({ displayDrawer: true });
+  };
+
+  handleHideDrawer = () => {
+    this.setState({ displayDrawer: false });
+  };
+
+  logIn = (email, password) => {
+    this.setState({
+      user: {
+        email,
+        password,
+        isLoggedIn: true,
+      },
+    });
+  };
+
+  logOut = () => {
+    this.setState({
+      user: user,
+    });
+  };
 
   render() {
-    const { isLoggedIn } = this.props;
-    const { listCourses, listNotifications, displayDrawer } = this.state;
+    const { user, listCourses, listNotifications, displayDrawer } = this.state;
 
     return (
-      <>
-        <Notification listNotifications={listNotifications} 
-        isLoggedIn={isLoggedIn}
-        displayDrawer={displayDrawer}
-        handleDisplayDrawer={this.handleDisplayDrawer}
-        handleHideDrawer={this.handleHideDrawer}
+      <AppContext.Provider value={{ user, logOut: this.logOut }}>
+        <Notification
+          listNotifications={listNotifications}
+          displayDrawer={displayDrawer}
+          handleDisplayDrawer={this.handleDisplayDrawer}
+          handleHideDrawer={this.handleHideDrawer}
         />
         <div className={css(styles.app)}>
           <Header />
           <main className={css(styles.body)}>
-            {isLoggedIn ? (
+            {user.isLoggedIn ? (
               <BodySectionWithMarginBottom title="Course list">
                 <CourseList listCourses={listCourses} />
               </BodySectionWithMarginBottom>
             ) : (
               <BodySectionWithMarginBottom title="Login to continue">
-                <Login />
+                <Login logIn={this.logIn} />
               </BodySectionWithMarginBottom>
             )}
             <BodySection title="News from the School">
@@ -124,10 +131,10 @@ class App extends React.Component {
             </BodySection>
           </main>
           <footer className={css(styles.footer)}>
-          <Footer />
+            <Footer />
           </footer>
         </div>
-      </>
+      </AppContext.Provider>
     );
   }
 }
