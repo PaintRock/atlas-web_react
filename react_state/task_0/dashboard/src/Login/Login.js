@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
   formInput: {
     flex: '1',
     border: 'none',
+    marginLeft: '40px',
 
   },
   button: {
