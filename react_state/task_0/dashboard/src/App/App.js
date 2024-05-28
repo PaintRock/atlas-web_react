@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 import CourseList from '../CourseList/CourseList.js';
 import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
 import BodySection from '../BodySection/BodySection';
+import listNotifications from '../Notifications/Notifications';
 import { getLatestNotification } from '../utils/utils';
 
 
@@ -58,12 +59,10 @@ class App extends React.Component {
       ],
       displayDrawer: false,
     };
-  this.handleKeyDown = this.handleKeyDown.bind(this);
-  this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
-  this.handleHideDrawer = this.handleHideDrawer.bind(this);
-  this.logIn = this.logIn.bind(this);
-  this.logOut = this.logOut.bind(this);
-}
+    this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
+    this.handleHideDrawer = this.handleHideDrawer.bind(this);
+  }
 
   componentDidMount() {
     document.addEventListener('keydown', this.handleKeyDown);
@@ -73,15 +72,22 @@ class App extends React.Component {
     document.removeEventListener('keydown', this.handleKeyDown);
   }
 
-  handleDisplayDrawer() {
+  handleKeyDown(event) {
+    if (event.ctrlKey && event.key === 'h') {
+      alert('Logging you out');
+      this.state.logOut();
+    }
+  }
+
+  handleDisplayDrawer = () => {
     this.setState({ displayDrawer: true });
-  }
+  };
 
-  handleHideDrawer() {
+  handleHideDrawer = () => {
     this.setState({ displayDrawer: false });
-  }
+  };
 
-  logIn(email, password) {
+  logIn = (email, password) => {
     this.setState({
       user: {
         email,
@@ -89,22 +95,22 @@ class App extends React.Component {
         isLoggedIn: true,
       },
     });
-  }
+  };
 
-  logOut() {
+  logOut = () => {
     this.setState({
       user: user,
     });
-  }
+  };
 
   render() {
-    const { user, logOut, listCourses, listNotifications } = this.state;
+    const { user, listCourses, listNotifications, displayDrawer } = this.state;
 
     return (
-      <AppContext.Provider value={{ user, logOut }}>
+      <AppContext.Provider value={{ user, logOut: this.logOut }}>
         <Notification
           listNotifications={listNotifications}
-          displayDrawer={this.state.displayDrawer}
+          displayDrawer={displayDrawer}
           handleDisplayDrawer={this.handleDisplayDrawer}
           handleHideDrawer={this.handleHideDrawer}
         />
