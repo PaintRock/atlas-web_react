@@ -31,7 +31,8 @@ const styles = StyleSheet.create({
   formInput: {
     flex: '1',
     border: 'none',
-     },
+    marginLeft: '40px',
+  },
   button: {
     backgroundColor: 'blue',
     color: 'white',
@@ -48,42 +49,46 @@ const styles = StyleSheet.create({
 
 function Login() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [enableSubmit, setEnableSubmit] = useState(false);
-    
-    const handleLoginSubmit = (e) => {
-        e.preventDefault();
-        setIsLoggedIn(true);
-    };
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [enableSubmit, setEnableSubmit] = useState(false);
 
-    const handleChangePassword = (e) => {
-      setPassword(e.target.value);
-      setEnableSubmit(email !== '' && e.target.value !== '');
-    };
+  const handleLoginSubmit = (e) => {
+    e.preventDefault();
+    if (email === 'valid@example.com' && password === 'correctpassword') {
+      props.logIn(email, password);
+    } else {
+      alert('Invalid email or password');
+    }
+  };
+  
+  const handleChangePassword = (e) => {
+    setPassword(e.target.value);
+    setEnableSubmit(email !== '' && e.target.value !== '');
+  };
 
-    const handleChangeEmail = (e) => {
-      setEmail(e.target.value);
-      setEnableSubmit(e.target.value !== '' && password !== '');
-    };
+  const handleChangeEmail = (e) => {
+    setEmail(e.target.value);
+    setEnableSubmit(e.target.value !== '' && password !== '');
+  };
 
-    return (
+  return (
     <div className="App-body">
       <p>Login to access the full dashboard</p>
-      <form  onSubmit={handleLoginSubmit}>
+      <form onSubmit={handleLoginSubmit}>
         <div className={css(styles.formRow)}>
           <div className={css(styles.formGroup)}>
             <label htmlFor="email" className={css(styles.formLabel)}>
               Email:
             </label>
-            <input 
-            type="email" 
-            id="email" 
-            name="email"
-            className={css(styles.formInput)}
-            value={email}
-            onChange={handleChangeEmail}
-               />
+            <input
+              type="email"
+              id="email"
+              name="email"
+              className={css(styles.formInput)}
+              value={email}
+              onChange={handleChangeEmail}
+            />
           </div>
           <div className={css(styles.formGroup)}>
             <label htmlFor="password" className={css(styles.formLabel)}>
@@ -95,14 +100,15 @@ function Login() {
               name="password"
               className={css(styles.formInput)}
               value={password}
-              style={{ marginLeft: '40px' }}
+              onChange={handleChangePassword}
             />
           </div>
-          <input type='submit' 
-          className={css(styles.button)}
-            disabled={!enableSubmit} 
+          <input
+            type='submit'
+            className={css(styles.button)}
+            disabled={!enableSubmit}
             value="OK"
-            />
+          />
         </div>
       </form>
     </div>

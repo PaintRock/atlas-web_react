@@ -45,8 +45,12 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: user,
-      logOut: logOut,
+      user: {
+        email: '',
+        password: '',
+        isLoggedIn: false,
+      },
+
       listCourses: [
         { id: 1, name: 'ES6', credit: 60 },
         { id: 2, name: 'Webpack', credit: 20 },
@@ -89,6 +93,7 @@ class App extends React.Component {
 
   logIn = (email, password) => {
     this.setState({
+      ...this.state.value,
       user: {
         email,
         password,
@@ -97,9 +102,21 @@ class App extends React.Component {
     });
   };
 
+  handleKeyDown(event) {
+    if (event.ctrlKey && event.key === 'h') {
+      alert('Logging you out');
+      this.logOut();
+    }
+  }
+
   logOut = () => {
     this.setState({
-      user: user,
+      ...this.state.value,
+      user: {
+        email: '',
+        password: '',
+        isLoggedIn: true,
+      },
     });
   };
 
@@ -107,7 +124,7 @@ class App extends React.Component {
     const { user, listCourses, listNotifications, displayDrawer } = this.state;
 
     return (
-      <AppContext.Provider value={{ user, logOut: this.logOut }}>
+      <AppContext.Provider value={ this.state.value }>
         <Notification
           listNotifications={listNotifications}
           displayDrawer={displayDrawer}

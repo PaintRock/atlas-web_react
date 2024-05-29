@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Notifications from './Notifications';
 import { getLatestNotification } from '../utils/utils';
+import NotificationItem from './NotificationItem';
 
 describe('Notifications component', () => {
   let listNotifications;
@@ -25,7 +26,7 @@ describe('Notifications component', () => {
       <Notifications
         displayDrawer={true}
         listNotifications={listNotifications}
-      />
+ />
     );
     expect(wrapper.find(NotificationItem)).toHaveLength(listNotifications.length);
   });
@@ -53,15 +54,14 @@ describe('Notifications component', () => {
   it('calls handleDisplayDrawer when clicking on the menu item', () => {
     const handleDisplayDrawer = jest.fn();
     const wrapper = shallow(<Notifications handleDisplayDrawer={handleDisplayDrawer} />);
-    wrapper.find('.menuItem').simulate('click');
+    wrapper.find('[data-testid="menuItem"]').simulate('click'); 
     expect(handleDisplayDrawer).toHaveBeenCalled();
   });
 
   it('calls handleHideDrawer when clicking on the close button', () => {
     const handleHideDrawer = jest.fn();
-    const wrapper = shallow(<Notifications displayDrawer handleHideDrawer={handleHideDrawer} />);
-    wrapper.find('button').simulate('click');
-    expect(handleHideDrawer).toHaveBeenCalled();
+    const wrapper = shallow(<Notifications displayDrawer={true} handleHideDrawer={handleHideDrawer} />);
+    wrapper.find('[data-testid="closeButton"]').simulate('click');    expect(handleHideDrawer).toHaveBeenCalled();
   });
 
 });

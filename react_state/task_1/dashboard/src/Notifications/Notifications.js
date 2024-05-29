@@ -80,7 +80,12 @@ urgentNotificationStyle: {
 },
 });
 
-export default function Notifications({ displayDrawer, listNotifications, handleDisplayDrawer, handleHideDrawer, isLoggedIn }) {
+export default function Notifications({ 
+  displayDrawer, 
+  listNotifications, 
+  handleDisplayDrawer, 
+  handleHideDrawer, 
+  isLoggedIn }) {
   const handleClick = () => {
     handleHideDrawer();
     console.log('Close button has been clicked');
@@ -89,13 +94,17 @@ export default function Notifications({ displayDrawer, listNotifications, handle
   return (
     <>
       {isLoggedIn && !displayDrawer && (
-  <div className={css(styles.menuItem)} onClick={handleDisplayDrawer}>
+  <div 
+  className={css(styles.menuItem)} 
+  onClick={handleDisplayDrawer}
+  data-testid="menuItem"
+  >
     Your notifications
   </div>
 )}
       {displayDrawer && (
         <div className={css(styles.notifications, displayDrawer && styles.NotificationOpened)}>
-                   <button
+          <button
             style={{
               position: 'absolute',
               right: '20px',
@@ -107,6 +116,7 @@ export default function Notifications({ displayDrawer, listNotifications, handle
             }}
             aria-label="Close"
             onClick={handleHideDrawer}
+            data-testId="closeButton"
           >
             Close
             <span style={{ fontSize: '30px' }}>&times;</span>
@@ -147,27 +157,5 @@ Notifications.defaultProps = {
   listNotifications: [],
   handleDisplayDrawer: () => {},
   handleHideDrawer: () => {},
-  isLoggedIn: false,
+  isLoggedIn: true,
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
