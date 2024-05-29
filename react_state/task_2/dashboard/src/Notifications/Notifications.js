@@ -81,7 +81,7 @@ urgentNotificationStyle: {
 },
 });
 
-export default function Notifications({ displayDrawer, listNotifications, handleDisplayDrawer, handleHideDrawer, isLoggedIn }) {
+export default function Notifications({ displayDrawer, listNotifications, handleDisplayDrawer, handleHideDrawer, isLoggedIn, markNotificationAsRead }) {
   const handleClick = () => {
     handleHideDrawer();
     console.log('Close button has been clicked');
@@ -121,6 +121,7 @@ export default function Notifications({ displayDrawer, listNotifications, handle
                     type={notification.type}
                     value={notification.value}
                     html={notification.html}
+                    markAsRead={() => markNotificationAsRead(notification.id)}
                   />
                 ))}
               </ul>
