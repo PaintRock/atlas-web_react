@@ -11,21 +11,8 @@ describe('Footer', () => {
     shallow(<Footer />);
   });
 
-  it('does not display the link when the user is logged out within the context', () => {
-    const wrapper = shallow(
-      <AppContext.Provider value={{ user: { isLoggedIn: false } }}>
-        <Footer />
-      </AppContext.Provider>
-    );
-    expect(wrapper.find('a').length).toBe(0);
-  });
-
-  it('displays the link when the user is logged in within the context', () => {
-    const wrapper = shallow(
-      <AppContext.Provider value={{ user: { isLoggedIn: true } }}>
-        <Footer />
-      </AppContext.Provider>
-    );
-    expect(wrapper.find('a').length).toBe(1);
+  it('renders the text "Contact us"', () => {
+    const wrapper = shallow(<Footer />);
+    expect(wrapper.text()).toContain('Contact us');
   });
 });

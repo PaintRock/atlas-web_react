@@ -3,32 +3,39 @@ import { shallow } from 'enzyme';
 import Notifications from './Notifications';
 import { getLatestNotification } from '../utils/utils';
 
-describe('Notifications component', () => {
-  let listNotifications;
-  let latestNotification;
 
-  beforeEach(() => {
-    listNotifications = getLatestNotification();
-    listNotifications = [
-      { id: 1, type: 'default', value: 'New course available' },
-      { id: 2, type: 'urgent', value: 'New resume available' },
-      { id: 3, type: 'urgent', html: { __html: getLatestNotification() } },
-    ];
-  });
+beforeEach(() => {
+  listNotifications = getLatestNotification();
+  listNotifications = [
+    { id: 1, type: 'default', value: 'New course available' },
+    { id: 2, type: 'urgent', value: 'New resume available' },
+    { id: 3, type: 'urgent', html: { __html: getLatestNotification() } },
+  ];
+}
 
-  it('renders without crashing', () => {
-    shallow(<Notifications />);
-  });
+it('renders without crashing', () => {
+  shallow(<Notifications />);
+});
 
-  it('renders the correct number of list items based on the listNotifications prop', () => {
-    const listNotifications = [
-      { id: 1, type: 'default', value: 'Notification 1' },
-      { id: 2, type: 'urgent', value: 'Notification 2' },
-      { id: 3, type: 'default', value: 'Notification 3' },
-    ];
-    const wrapper = shallow(<Notifications listNotifications={listNotifications} />);
-    expect(wrapper.find('ul').children().length).toBe(listNotifications.length);
-  });
+it('renders the correct number of NotificationItem components', () => {
+  const wrapper = shallow(
+    <Notifications
+      displayDrawer={true}
+      listNotifications={listNotifications}
+    />
+  );
+  expect(wrapper.find(NotificationItem)).toHaveLength(listNotifications.length);
+});
+
+it('renders the text "Here is the list of notifications"', () => {
+  const wrapper = shallow(
+    <Notifications
+      displayDrawer={true}
+      listNotifications={listNotifications}
+    />
+  );
+  expect(wrapper.contains(<p>Here is the list of notifications</p>)).toBe(true);
+});
 
   it('renders the text "Here is the list of notifications"', () => {
     const wrapper = shallow(<Notifications />);
@@ -58,5 +65,4 @@ describe('Notifications component', () => {
     wrapper.find('button').simulate('click');
     expect(handleHideDrawer).toHaveBeenCalled();
   });
-
-});
+);

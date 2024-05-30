@@ -15,9 +15,9 @@ describe('Header', () => {
         <Header />
       </AppContext.Provider>
     );
-    expect(wrapper.find('#logoutSection').exists()).toBe(false);
+    expect(wrapper.find('section.welcome').exists()).toBe(false);
   });
-
+  
   it('renders a Header component with a user defined (isLoggedIn is true and an email is set)', () => {
     const wrapper = mount(
       <AppContext.Provider value={{ user: { isLoggedIn: true, email: 'test@example.com' }, logOut: () => {} }}>

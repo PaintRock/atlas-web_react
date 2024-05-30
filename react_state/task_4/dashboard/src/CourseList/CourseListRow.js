@@ -2,9 +2,17 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, css } from 'aphrodite';
 
-const rowStyle = { backgroundColor: '#f5f5f5ab' };
-const headerStyle = { backgroundColor: '#deb5b545' };
-const rowChecked = { backgroundColor: '#e6e4e4' };
+const styles = StyleSheet.create({
+  rowStyle: {
+    backgroundColor: '#f5f5f5ab',
+  },
+  headerStyle: {
+    backgroundColor: '#deb5b545',
+  },
+  rowChecked: {
+    backgroundColor: '#e6e4e4',
+  },
+});
 
 const CourseListRow = ({ isHeader, textFirstCell, textSecondCell }) => {
   const [isChecked, setIsChecked] = useState(false);
@@ -13,33 +21,34 @@ const CourseListRow = ({ isHeader, textFirstCell, textSecondCell }) => {
     setIsChecked(!isChecked);
   };
 
-  const rowStyles = isHeader ? headerStyle : isChecked ? rowChecked : rowStyle;
+  const rowStyles = isHeader
+    ? styles.headerStyle
+    : isChecked
+    ? styles.rowChecked
+    : styles.rowStyle;
 
-  const renderCheckbox = () => {
+  const renderCourseNamesAndCheckbox = () => {
     if (!isHeader) {
       return (
         <td>
-          <input
-            type="checkbox"
-            checked={isChecked}
-            onChange={handleCheckboxChange}
-          />
+          <input type="checkbox" checked={isChecked} onChange={handleCheckboxChange} />
+          {textFirstCell}
         </td>
       );
     }
-    return null;
+    return <th>{textFirstCell}</th>;
   };
 
   if (isHeader) {
     if (textSecondCell === null) {
       return (
-        <tr style={rowStyles}>
+        <tr className={css(rowStyles)}>
           <th colSpan={2}>{textFirstCell}</th>
         </tr>
       );
     } else {
       return (
-        <tr style={rowStyles}>
+        <tr className={css(rowStyles)}>
           <th>{textFirstCell}</th>
           <th>{textSecondCell}</th>
         </tr>
@@ -47,9 +56,8 @@ const CourseListRow = ({ isHeader, textFirstCell, textSecondCell }) => {
     }
   } else {
     return (
-      <tr style={rowStyles}>
-        {renderCheckbox()}
-        <td>{textFirstCell}</td>
+      <tr className={css(rowStyles)}>
+        {renderCourseNamesAndCheckbox()}
         <td>{textSecondCell}</td>
       </tr>
     );

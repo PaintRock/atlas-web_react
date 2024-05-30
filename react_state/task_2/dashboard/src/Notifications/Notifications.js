@@ -81,7 +81,14 @@ urgentNotificationStyle: {
 },
 });
 
-export default function Notifications({ displayDrawer, listNotifications, handleDisplayDrawer, handleHideDrawer, isLoggedIn, markNotificationAsRead }) {
+const Notifications = ({
+  listNotifications = [],
+  displayDrawer = false,
+  handleDisplayDrawer,
+  handleHideDrawer,
+  isLoggedIn = false, // Destructure isLoggedIn here
+  markNotificationAsRead,
+}) => {
   const handleClick = () => {
     handleHideDrawer();
     console.log('Close button has been clicked');
@@ -89,11 +96,17 @@ export default function Notifications({ displayDrawer, listNotifications, handle
 
   return (
     <>
-      {isLoggedIn && !displayDrawer && (
-      <div className={css(styles.menuItem)}>Your notifications</div>
-      )}
+   {isLoggedIn && !displayDrawer && (
+  <div
+    className={css(styles.menuItem)}
+    onClick={handleDisplayDrawer}
+  >
+    Your notifications
+  </div>
+)}
       {displayDrawer && (
         <div className={css(styles.notifications, displayDrawer && styles.NotificationOpened)}>
+  
           <button
             style={{
               position: 'absolute',
@@ -133,11 +146,12 @@ export default function Notifications({ displayDrawer, listNotifications, handle
   );
 }
 
+// Notifications.js
 Notifications.propTypes = {
   displayDrawer: PropTypes.bool,
   listNotifications: PropTypes.arrayOf(NotificationItemShape),
   handleDisplayDrawer: PropTypes.func,
-  handleHideDrawer: PropTypes.func,
+  handleHideDrawer: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool,
 };
 
@@ -148,3 +162,4 @@ Notifications.defaultProps = {
   handleHideDrawer: () => {},
   isLoggedIn: false,
 };
+export default Notifications;

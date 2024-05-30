@@ -1,5 +1,7 @@
 import React from "react";
 import { StyleSheet, css } from "aphrodite";
+import PropTypes from "prop-types";
+import { useState } from 'react';
 
 const styles = StyleSheet.create({
   formRow: {
@@ -45,17 +47,45 @@ const styles = StyleSheet.create({
   },
 });
 
-function Login() {
+const Login = ({ logIn }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [enableSubmit, setEnableSubmit] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    logIn(email, password);
+    setIsLoggedIn(true);
+  };
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+    setEnableSubmit(e.target.value.trim() !== "" && password.trim() !== "");
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+    setEnableSubmit(email.trim() !== "" && e.target.value.trim() !== "");
+  };
+
   return (
     <div className="App-body">
       <p>Login to access the full dashboard</p>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className={css(styles.formRow)}>
           <div className={css(styles.formGroup)}>
             <label htmlFor="email" className={css(styles.formLabel)}>
               Email:
             </label>
-            <input type="email" id="email" name="email" style={{border: 'none'}}/>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={email}
+              onChange={handleEmailChange}
+              style={{ border: 'none' }}
+            />
           </div>
           <div className={css(styles.formGroup)}>
             <label htmlFor="password" className={css(styles.formLabel)}>
@@ -65,15 +95,30 @@ function Login() {
               type="password"
               id="password"
               name="password"
+              value={password}
+              onChange={handlePasswordChange}
               className={css(styles.formInput)}
               style={{ marginLeft: '40px' }}
             />
           </div>
-          <button className={css(styles.button)} type="button">OK</button>
+          <input
+            type="submit"
+            value="OK"
+            className={css(styles.button)}
+            disabled={!enableSubmit}
+          />
         </div>
       </form>
     </div>
   );
 }
+
+Login.propTypes = {
+  logIn: PropTypes.func.isRequired,
+};
+
+Login.defaultProps = {
+  logIn: () => {},
+};
 
 export default Login;

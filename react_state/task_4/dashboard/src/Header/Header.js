@@ -1,7 +1,8 @@
 import React from 'react';
 import logo from '../assets/mascot-blue.png';
 import { StyleSheet, css } from 'aphrodite';
-
+import { AppContext } from '../App/AppContext';
+import Login from '../Login/Login';
 
 const translateSpin = {
     '0%': {
@@ -64,20 +65,40 @@ const styles = StyleSheet.create({
     borderBottom: '4px solid lightblue',
     paddingBottom: '10px',
   },
+
+welcome: {
+  marginTop: '20px',
+},
+logout: {
+  cursor: 'pointer',
+  fontStyle: 'italic',
+},
 });
 
-const Header = () => {
+class Header extends React.Component {
+static contextType = AppContext;
+
+render() {
+  const { user, logOut } = this.context;
+
   return (
     <header className={css(styles.header)}>
       <div className={css(styles.appHeader)}>
         <img src={logo} className={css(styles.logo)} alt="logo" />
         <h1>School dashboard</h1>
       </div>
+      {user.isLoggedIn && (
+        <section className={css(styles.welcome)}>
+          Welcome {user.email} <a className={css(styles.logout)} onClick={logOut}>(logout)</a>
+        </section>
+      )}
     </header>
   );
-};
+}
+}
 
 export default Header;
+
 
   // {/* <a
   //    className="App-link"
