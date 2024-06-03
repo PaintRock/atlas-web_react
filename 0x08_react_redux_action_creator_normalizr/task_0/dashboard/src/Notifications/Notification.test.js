@@ -11,7 +11,7 @@ beforeEach(() => {
     { id: 2, type: 'urgent', value: 'New resume available' },
     { id: 3, type: 'urgent', html: { __html: getLatestNotification() } },
   ];
-}
+};
 
 it('renders without crashing', () => {
   shallow(<Notifications />);
