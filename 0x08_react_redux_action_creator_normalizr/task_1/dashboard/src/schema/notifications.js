@@ -1,12 +1,11 @@
-import * as Normalizr from 'normalizr';
+import { normalize, schema } from 'normalizr';
 import * as data from '../../notifications.json';
-import { schema } from 'normalizr';
 
-const user = new Normalizr.schema.Entity("users");
-const message = new Normalizr.schema.Entity("messages", {}, { idAttribute: "guid" });
-const notification = new Normalizr.schema.Entity("notifications", {
+const user = new schema.Entity("users");
+const message = new schema.Entity("messages", {}, { idAttribute: "guid" });
+const notification = new schema.Entity("notifications", {
   author: user,
   context: message,
 });
 
-export const normalizedData = Normalizr.normalize(data.default, [notification]);
+export const normalizedData = normalize(data.default, [notification]);
