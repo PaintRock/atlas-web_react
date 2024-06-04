@@ -1,0 +1,1 @@
+This is the REadme. in the React Inline Styling folder whic is just to convert the App into a React Class.  
